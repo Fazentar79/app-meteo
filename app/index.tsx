@@ -1,3 +1,4 @@
+import DateTime from "@/components/Date";
 import ThemedText from "@/components/ThemedText";
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { Image } from "expo-image";
@@ -53,31 +54,62 @@ export default function Index() {
           </ThemedText>
         </View>
       </View>
-      <View style={styles.dateAndHour}>
+      <View style={styles.DateAndHour}>
         <ThemedText variant="body" color="text">
-          09:43
+          <DateTime />
         </ThemedText>
-        <View>
-          <ThemedText variant="body" color="text">
-            mar. 4 novembre 2025
-          </ThemedText>
-        </View>
       </View>
       <View style={styles.meteoInfos}>
         <View>
           <ThemedText variant="body" color="text">
-            Humidité: 40%
+            <Image
+              source={require("@/assets/images/humidite.png")}
+              style={{
+                width: 16,
+                height: 16,
+                alignSelf: "center",
+                marginRight: 4,
+              }}
+            />{" "}
+            40%
           </ThemedText>
           <ThemedText variant="body" color="text">
-            Vent: 15 km/h
+            <Image
+              source={require("@/assets/images/vent.png")}
+              style={{
+                width: 16,
+                height: 16,
+                alignSelf: "center",
+                marginRight: 4,
+              }}
+            />{" "}
+            15 km/h
           </ThemedText>
         </View>
         <View>
           <ThemedText variant="body" color="text">
-            Précipitations: 10%
+            <Image
+              source={require("@/assets/images/pluie.png")}
+              style={{
+                width: 16,
+                height: 16,
+                alignSelf: "center",
+                marginRight: 4,
+              }}
+            />{" "}
+            10%
           </ThemedText>
           <ThemedText variant="body" color="text">
-            Indice UV: 5
+            <Image
+              source={require("@/assets/images/ultra-violet.png")}
+              style={{
+                width: 16,
+                height: 16,
+                alignSelf: "center",
+                marginRight: 4,
+              }}
+            />{" "}
+            5
           </ThemedText>
         </View>
       </View>
@@ -108,7 +140,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 32,
   },
-  dateAndHour: {
+  DateAndHour: {
     alignItems: "center",
     marginTop: 16,
   },
