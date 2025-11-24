@@ -1,12 +1,38 @@
 import DateTime from "@/components/Date";
 import ThemedText from "@/components/ThemedText";
 import { useThemeColors } from "@/hooks/useThemeColors";
+import useWeather from "@/hooks/useWeather";
 import { Image } from "expo-image";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const Colors = useThemeColors();
+  const { city, data, loading, error, coords } = useWeather();
+
+  if (loading) {
+    return (
+      <SafeAreaView
+        style={[styles.container, { backgroundColor: Colors.background }]}
+      >
+        <ThemedText variant="body" color="text">
+          Loading...
+        </ThemedText>
+      </SafeAreaView>
+    );
+  }
+
+  if (error) {
+    return (
+      <SafeAreaView
+        style={[styles.container, { backgroundColor: Colors.background }]}
+      >
+        <ThemedText variant="body" color="text">
+          Error: {error}
+        </ThemedText>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView
@@ -18,7 +44,7 @@ export default function Index() {
           style={{ width: 40, height: 40 }}
         />
         <ThemedText variant="title" color="text">
-          Ville choisie
+          {city}
         </ThemedText>
         <Image
           source={require("@/assets/images/search.png")}
@@ -27,7 +53,7 @@ export default function Index() {
       </View>
       <View style={styles.temperature}>
         <ThemedText variant="temperature" color="text">
-          24°C
+          {data?.current.temperature_2m} °C
         </ThemedText>
       </View>
       <View style={styles.mainInfos}>
@@ -47,10 +73,10 @@ export default function Index() {
           </ThemedText>
 
           <ThemedText variant="body" color="text">
-            Haute: 28°C
+            {`Hautes: ${data?.daily.temperature_2m_max[0]}°C`}
           </ThemedText>
           <ThemedText variant="body" color="text">
-            Basse: 18°C
+            {`Basses: ${data?.daily.temperature_2m_min[0]}°C`}
           </ThemedText>
         </View>
       </View>
@@ -71,7 +97,7 @@ export default function Index() {
                 marginRight: 4,
               }}
             />{" "}
-            40%
+            {data?.current.relative_humidity_2m} %
           </ThemedText>
           <ThemedText variant="body" color="text">
             <Image
@@ -83,7 +109,7 @@ export default function Index() {
                 marginRight: 4,
               }}
             />{" "}
-            15 km/h
+            {data?.current.windspeed_10m} km/h
           </ThemedText>
         </View>
         <View>
@@ -109,7 +135,7 @@ export default function Index() {
                 marginRight: 4,
               }}
             />{" "}
-            5
+            {data?.daily.uv_index_max[0]}
           </ThemedText>
         </View>
       </View>
