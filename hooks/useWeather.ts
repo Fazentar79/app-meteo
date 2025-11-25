@@ -51,9 +51,7 @@ export default function useWeather() {
         longitude,
       });
       const place = places?.[0];
-      setCity(
-        [place?.name, place?.region, place?.country].filter(Boolean).join(", ")
-      );
+      setCity([place?.city, place?.region].filter(Boolean).join(", "));
     } catch (error) {
       // Non-critical error: leave city blank
     }

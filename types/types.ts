@@ -1,3 +1,5 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 export interface Coords {
   latitude: number;
   longitude: number;
@@ -55,4 +57,10 @@ export interface Current {
   time: string;
   weathercode: number;
   windspeed_10m: number;
+}
+
+export type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
+export interface WeatherMeta {
+  label: string;
+  icon: IconName;
 }

@@ -1,0 +1,25 @@
+import { WeatherMeta } from "@/types/types";
+
+export const WMO: Record<number, WeatherMeta> = {
+  0: { label: "Clear", icon: "weather-sunny" },
+  1: { label: "Mainly clear", icon: "weather-sunny" },
+  2: { label: "Partly cloudy", icon: "weather-partly-cloudy" },
+  3: { label: "Overcast", icon: "weather-cloudy" },
+  45: { label: "Fog", icon: "weather-fog" },
+  48: { label: "Rime fog", icon: "weather-fog" },
+  51: { label: "Drizzle light", icon: "weather-rainy" },
+  53: { label: "Drizzle", icon: "weather-rainy" },
+  55: { label: "Drizzle heavy", icon: "weather-pouring" },
+  61: { label: "Rain slight", icon: "weather-rainy" },
+  63: { label: "Rain", icon: "weather-rainy" },
+  65: { label: "Rain heavy", icon: "weather-pouring" },
+  71: { label: "Snow slight", icon: "weather-snowy" },
+  73: { label: "Snow", icon: "weather-snowy" },
+  75: { label: "Snow heavy", icon: "weather-snowy-heavy" },
+  80: { label: "Rain showers", icon: "weather-rainy" },
+  81: { label: "Rain showers", icon: "weather-rainy" },
+  82: { label: "Violent showers", icon: "weather-pouring" },
+  95: { label: "Thunderstorm", icon: "weather-lightning" },
+  96: { label: "TS + slight hail", icon: "weather-lightning-rainy" },
+  99: { label: "TS + heavy hail", icon: "weather-lightning-rainy" },
+};
